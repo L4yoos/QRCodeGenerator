@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QR Code Generator</title>
+    <script src="https://code.jquery.com/jquery-3.7.0.min.js" integrity="sha256-2Pmvv0kuTBOenSvLm6bvfBSSHrUJ+3A7x6P5Ebd07/g=" crossorigin="anonymous"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-white">
+    <div class="container mx-auto px-4 pt-16">
+        <h1 class="mb-8 uppercase tracking-wider text-black text-lg font-bold text-center">QR Code Generator</h1>
+        <div class="grid grid-cols-2 gap-4">
+            <div class="p-4 sm:p-8 bg-gray-200 text-white shadow sm:rounded-lg">
+                <form id="myForm">
+                    <div class="form-group">
+                        <label>
+                            <span class="block text-sm font-medium text-slate-700">QR data (text or URL)</span>
+                            <input type="text" name="link" class="placeholder:italic placeholder:text-slate-400 block bg-white text-black w-full border border-slate-300 rounded-md py-2 pl-9 pr-3 shadow-sm focus:outline-none focus:border-sky-500 focus:ring-sky-500 focus:ring-1 sm:text-sm" value="MyCinemaList.pl">
+                        </label>
+                    </div>
+                    <div class="form-group">
+                        <label>
+                        <span class="block text-sm font-medium text-slate-700">Size (px)</span>
+                        <input type="number" name="size" class="placeholder:italic placeholder:text-slate-400 block bg-white text-black w-full border border-slate-300 rounded-md py-2 pl-9 pr-3 shadow-sm focus:outline-none focus:border-sky-500 focus:ring-sky-500 focus:ring-1 sm:text-sm" value="200">
+                        </label>
+                    </div>
+                    <div class="form-group">
+                        <label>
+                        <span class="block text-sm font-medium text-slate-700">Margin (blocks)</span>
+                        <input type="number" name="margin" class="placeholder:italic placeholder:text-slate-400 block bg-white text-black w-full border border-slate-300 rounded-md py-2 pl-9 pr-3 shadow-sm focus:outline-none focus:border-sky-500 focus:ring-sky-500 focus:ring-1 sm:text-sm" value="4">
+                        </label>
+                    </div>
+                    <div class="form-group">
+                        <label>
+                        <span class="block text-sm font-medium text-slate-700">Color (foreground)</span>
+                        <input type="color" name="colorForeground" class="block w-full border border-slate-300 rounded-md" value="#000000">
+                        </label>
+                    </div>
+                    <div class="form-group">
+                        <label>
+                        <span class="block text-sm font-medium text-slate-700">Color (background)</span>
+                        <input type="color" name="colorBackground" class="block w-full border border-slate-300 rounded-md" value="#ffffff">
+                        </label>
+                    </div>
+                    <div class="form-group">
+                        <label>
+                        <span class="block text-sm font-medium text-slate-700">Error correction</span>
+                        <select name="ErrorCorrectionOption"class="placeholder:italic placeholder:text-slate-400 block bg-white text-black w-full border border-slate-300 rounded-md py-2 pl-9 pr-3 shadow-sm focus:outline-none focus:border-sky-500 focus:ring-sky-500 focus:ring-1 sm:text-sm" >
+                            <option value="L">Low</option>
+                            <option value="M" selected="">Medium</option>
+                            <option value="H">High</option>
+                        </select>
+                        </label>
+                    </div>
+                    <div class="form-group">
+                        <label>
+                        <span class="block text-sm font-medium text-slate-700">Logo URL</span>
+                        <input type="text" name="image" class="placeholder:italic placeholder:text-slate-400 block bg-white text-black w-full border border-slate-300 rounded-md py-2 pl-9 pr-3 shadow-sm focus:outline-none focus:border-sky-500 focus:ring-sky-500 focus:ring-1 sm:text-sm" value="">
+                        </label>
+                    </div>
+                    <a class="mt-4 float-left focus:outline-none text-white bg-yellow-700 hover:bg-yellow-800 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2" href="qrcode.png" download>Download</a>
+                    <button type="submit" class="mt-4 float-right focus:outline-none text-white bg-green-700 hover:bg-green-800 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2">Generate</button>
+                </form>
+            </div>
+            <div class="p-4 sm:p-8 bg-gray-200 shadow sm:rounded-lg relative inset-0 flex" id="myData">
+                <img id="imgElem" src="" class="mx-auto"></img>
+            </div>
+        </div>
+        </div>
+        <footer class="footer">
+        <div class="container text-center mx-auto text-sm px-4 py-6">
+            Designed By <a href="https://github.com/L4yoos" class="uppercase tracking-wider text-black font-bold hover:text-green-600">Konrad Dalecki</a>
+        </div>
+        </footer>
+    <script type="text/javascript">
+    $(document).ready(function(){
+        $('#myForm').submit(function(e){
+            e.preventDefault();
+            $.ajax({
+                url: "generate.php",
+                type: "POST",
+                data: $(this).serialize(),
+                success: function(data){
+                    var imgElem = document.getElementById('imgElem');
+                    var baseStr64 = data;
+                    imgElem.setAttribute('src', data);
+                },
+                error: function(){
+                    alert("Form submission failed!");
+                }
+            });
+        });
+    });
+    </script>
+</body>
+</html>
