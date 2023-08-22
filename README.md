@@ -6,6 +6,10 @@ Qr Code Generator to praktyczna i wszechstronna aplikacja, która umożliwia uż
 
 Aplikacja Qr Code Generator to doskonałe narzędzie dla każdego, kto chce w prosty sposób stworzyć własne, spersonalizowane kody QR, bez konieczności angażowania zewnętrznych usług. Dzięki niej, użytkownicy mogą szybko i skutecznie wzbogacić swoje projekty o atrakcyjne i funkcjonalne kody QR, które znacząco ułatwią wymianę informacji z klientami, czy uczestnikami.
 
+## Demo
+
+[Project Website](https://qrcode.konraddalecki.pl/)
+
 ## Screenshots
 
 ![App Screenshot](https://i.imgur.com/fN7Jx8O.png)

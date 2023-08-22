@@ -55,7 +55,5 @@ else {
     $result = $writer->write($qr_code);
 }
 
-$result->saveToFile(__DIR__.'/qrcode.png');
-
 $dataUri = $result->getDataUri();
 echo $dataUri;
