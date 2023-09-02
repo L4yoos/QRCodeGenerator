@@ -98,9 +98,11 @@
                 success: function(data){
                     var imgElem = document.getElementById('imgElem');
                     var baseStr64 = data;
+                    var aElem = $("a").get(-2);
+
                     // hrefElem.attr('href', data);
-                    $("a").attr("href", data);
-                    $("a").attr("download", "");
+                    $(aElem).attr("href", data);
+                    $(aElem).attr("download", "");
                     imgElem.setAttribute('src', data);
                 },
                 error: function(){

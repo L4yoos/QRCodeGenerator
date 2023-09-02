@@ -19,7 +19,7 @@
                 </a>
             </div>
             <div class="mt-3">
-                <a class="inline-flex items-center px-4 py-2 bg-white text-gray-800 font-bold rounded border-b-2 border-green-500 hover:border-green-600 hover:bg-green-500 hover:text-white shadow-md py-2 px-6 inline-flex items-center transition ease-in-out duration-300" href="wifi/">
+                <a class="inline-flex items-center px-4 py-2 bg-white text-gray-800 font-bold rounded border-b-2 border-green-500 hover:border-green-600 hover:bg-green-500 hover:text-white shadow-md py-2 px-6 inline-flex items-center transition ease-in-out duration-300" href="index.php">
                     Wi-Fi
                 </a>
             </div>
@@ -73,9 +73,11 @@
                 success: function(data){
                     var imgElem = document.getElementById('imgElem');
                     var baseStr64 = data;
+                    var aElem = $("a").get(-2);
+
                     // hrefElem.attr('href', data);
-                    $("a").attr("href", data);
-                    $("a").attr("download", "");
+                    $(aElem).attr("href", data);
+                    $(aElem).attr("download", "");
                     imgElem.setAttribute('src', data);
                 },
                 error: function(){
