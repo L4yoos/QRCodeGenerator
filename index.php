@@ -24,7 +24,7 @@
                 </a>
             </div>
         </div>
-        <div class="grid grid-cols-2 gap-4">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
             <div class="p-4 sm:p-8 bg-gray-200 text-white shadow sm:rounded-lg">
                 <form id="myForm">
                     <div class="form-group">
